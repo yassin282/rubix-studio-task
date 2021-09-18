@@ -42,7 +42,7 @@ function Home() {
   }
   return (
     <div>
-      <header className="header">All Tasks</header>
+      <header className="header">My Tasks</header>
       <Taskmodal open={showModal.CreateModal} setShowModal={showModalFunc} refetch={refetch} ></Taskmodal>
 
       <TaskList tasks={tasks} refetch={refetch} openTask={openTask} EditTask={EditTask} />
