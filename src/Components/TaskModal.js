@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Task from "../Components/Task";
+import { CREATE_TASK } from "../Graphql/Mutations";
+import './Component.css';
 
 import {
   Typography,
@@ -10,13 +12,24 @@ import {
   TextField
 } from "@mui/material";
 import { DateTimePicker } from "@mui/lab";
+import { useQuery, useMutation } from "@apollo/client";
 
 import SelectInput from "@mui/material/Select/SelectInput";
-function TaskModal({ open, setShowModal, submit, task }) {
+import { logRoles } from "@testing-library/react";
+
+function TaskModal({ open, setShowModal, submit, task, refetch }) {
+  const [addTodo, { data, loading, error }] = useMutation(CREATE_TASK, {
+    onCompleted: () => {
+      refetch();
+      setShowModal('CreateModal', false);
+
+    }
+  });
   const [inputTask, setInputTask] = useState({
     title: "",
     description: "",
-    dueDate: null
+    dueDate: null,
+    completed: false
   });
 
   const onChangeHandler = event => {
@@ -26,34 +39,58 @@ function TaskModal({ open, setShowModal, submit, task }) {
     setInputTask(temp);
   };
   function submit(task) {
-    console.log(task);
+    console.log(task, "ttatatatata");
+    // const createMutation = useQuery(CREATE_TASK, task);
+    addTodo({
+      variables: {
+        input: task,
+        someOtherVariable: 1234,
+      }
+    });
+    // console.log(task);
   }
   return (
     <div>
-      <Modal open={open}>
-        <div>
-          <Input
-            label="title"
-            name="title"
-            onChange={e => onChangeHandler(e)}
-          ></Input>
+      <Modal open={open} className="modal">
+        <Box className="modal-box">
+          <div>
+            <div className="padding-md">
+              <TextField
+                label="title"
+                fullWidth
+                name="title"
+                focused
+                onChange={e => onChangeHandler(e)}
+              ></TextField>
+            </div>
+            <div className="padding-md">
 
-          <Input
-            label="Description"
-            name="description"
-            onChange={e => onChangeHandler(e)}
-          ></Input>
-          <Input
-            label="DateTimePicker"
-            type="datetime-local"
-            name="dueDate"
-            onChange={e => {
-              onChangeHandler(e);
-            }}
-          />
-          <button onClick={() => setShowModal(false)}> Cancel</button>
-          <button onClick={() => submit(inputTask)}> Submit</button>
-        </div>
+              <TextField
+                label="Description"
+                fullWidth
+                name="description"
+                focused
+                onChange={e => onChangeHandler(e)}
+              ></TextField>
+            </div>
+            <div className="padding-md">
+
+              <TextField
+                label="DateTimePicker"
+                type="date"
+                name="dueDate"
+                fullWidth
+                focused
+                onChange={e => {
+                  onChangeHandler(e);
+                }}
+              />
+            </div>
+            <Button className="margin-md" variant="contained" onClick={() => submit(inputTask)}> Submit</Button>
+
+            <Button className="margin-md" variant="contained" onClick={() => setShowModal('CreateModal', false)}> Cancel</Button>
+          </div>
+        </Box>
       </Modal>
     </div>
   );

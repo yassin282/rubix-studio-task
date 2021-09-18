@@ -1,0 +1,70 @@
+
+.createButton{
+    align-items: center;
+    display: flex;
+    justify-content: right;
+    padding-right: 50px;
+   }
+body {
+    color: black;
+
+    font-family: Arial;
+    text-align: center;
+  }
+  .App{
+      text-align: left
+  }
+  .header{
+      background: #2e2e2e;
+      padding: 24px;
+      color: white;
+      font-weight: bold;
+  }
+  .col-6{
+      display: inline-block;
+      width: 50%;
+  }
+  .col-4{
+    display: inline-block;
+    width: 33%;
+}
+.col-2{
+    display: inline-block;
+    width: 12%;
+}
+  .modal {
+      height: 50vh;
+      width:80%
+  }
+  .padding-md{
+      padding: 16px;
+  }
+  .modal-box{
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        padding:24px;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        background: white;
+        border: 2px solid #000;
+        box-shadow: 24;
+  }
+  .margin-md{
+    margin: 16px !important
+  }
+  
+  .deleteBtn{
+    background: red !important;
+}
+  @media screen and (max-width: 480px) {
+    .col-6 {
+        width: 80%
+    }
+    .col-4 {
+        width: 100% 
+    }
+    .col-2{
+        width: 20%
+    }
+  }

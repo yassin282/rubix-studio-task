@@ -9,10 +9,13 @@ query{
     description
     dueDate
     createdAt
+    completed
   }
 }
 
 
   
 `;
-export { TASKS }
+export {
+  TASKS
+}

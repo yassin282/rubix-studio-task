@@ -1,13 +1,20 @@
 import React from 'react'
 
-function TaskList({ id, title, description, completed, dueDate }) {
+
+function Task({ id, title, description, completed, dueDate }) {
+
 
     return (<li>
-        {title}
-        <button>Delete</button>
-        <button> Completed</button>
+        <div className="col-2">
+            {title}
+        </div>
+
+        <div className="col-2">
+            {dueDate}
+        </div>
+
     </li>
     );
 }
 
-export default TaskList;
+export default Task;
