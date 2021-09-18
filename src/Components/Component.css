@@ -12,7 +12,9 @@ body {
     text-align: center;
   }
   .App{
-      text-align: left
+      text-align: left;
+      max-height: 80vh;
+      overflow-y:scroll; 
   }
   .header{
       background: #2e2e2e;

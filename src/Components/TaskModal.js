@@ -33,13 +33,11 @@ function TaskModal({ open, setShowModal, submit, task, refetch }) {
   });
 
   const onChangeHandler = event => {
-    console.log(event.target.value);
     let temp = inputTask;
     temp[event.target.name] = event.target.value;
     setInputTask(temp);
   };
   function submit(task) {
-    console.log(task, "ttatatatata");
     // const createMutation = useQuery(CREATE_TASK, task);
     addTodo({
       variables: {
@@ -47,7 +45,6 @@ function TaskModal({ open, setShowModal, submit, task, refetch }) {
         someOtherVariable: 1234,
       }
     });
-    // console.log(task);
   }
   return (
     <div>

@@ -15,9 +15,7 @@ import Checkbox from '@mui/material/Checkbox';
 function ViewTaskModal({ task, setShowModal, open }) {
     useEffect(() => {
         // Update the document title using the browser API
-        console.log(open, "useEffect");
     });
-    console.log(task)
     const toggleModal = () => {
         setShowModal('ViewModal', false);
     }

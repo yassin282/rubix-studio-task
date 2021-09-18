@@ -36,7 +36,7 @@ function TaskList({ tasks, refetch, openTask, EditTask }) {
 
     return (< div >
         <List >
-            <div class="createButton">            <Button variant="contained" className="createButton" onClick={() => setCond(!cond)}>{cond ? 'Hide Done' : 'View Done'}</Button>
+            <div className="createButton">            <Button variant="contained" className="createButton" onClick={() => setCond(!cond)}>{cond ? 'Hide Done' : 'View Done'}</Button>
             </div>
             {tasks && tasks.map(task => task.completed == cond ?
                 <div key={task.id}>

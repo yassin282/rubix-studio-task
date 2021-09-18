@@ -2,20 +2,29 @@ import {
   gql
 } from "@apollo/client";
 const TASKS = gql`
-query{
-  tasks {
+query tasks($first: Int, $skip: Int) {
+  tasks(skip: $skip, first: $first) {
     id
     title
     description
     dueDate
-    createdAt
     completed
   }
-}
+}`;
+// query{
+//   tasks {
+//     id
+//     title
+//     description
+//     dueDate
+//     createdAt
+//     completed
+//   }
+// }
 
 
-  
-`;
+
+// `;
 export {
   TASKS
 }

@@ -17,7 +17,6 @@ import { EDIT_TASK } from "../Graphql/Mutations";
 function EditTaskModal({ task, setShowModal, open, refetch }) {
   useEffect(() => {
     // Update the document title using the browser API
-    console.log(inputTask, "inputTaskinputTaskinputTask");
   });
   const [inputTask, setInputTask] = useState({ ...task });
 
@@ -33,7 +32,6 @@ function EditTaskModal({ task, setShowModal, open, refetch }) {
   });
 
   const onChangeHandler = (event) => {
-    console.log(event.target.value, "heeeeey");
     let temp = inputTask;
     temp[event.target.name] = event.target.value;
     setInputTask({ ...inputTask, [event.target.name]: event.target.value });
@@ -47,7 +45,6 @@ function EditTaskModal({ task, setShowModal, open, refetch }) {
         data: { id: inputTask.id, title: inputTask.title, description: inputTask.description, dueDate: inputTask.dueDate },
       }
     });
-    // console.log(task);
   }
 
   return (
@@ -63,7 +60,7 @@ function EditTaskModal({ task, setShowModal, open, refetch }) {
               label="title"
               name="title"
               className="padding-md"
-              
+
               defaultValue={task.title}
               focused
               fullWidth
